@@ -4,15 +4,15 @@ import styled from 'styled-components'
 
 import { signOut } from '../../Auth/user-services'
 import { AppContext } from '../App/App'
+import { Header } from '../shared/Header'
 
 const NavContainer = styled.nav`
+  border-radius: 15px 15px 0 0;
   grid-area: header;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 1rem;
-  background-color: #333;
-  color: #fff;
+  background-color: ${props => props.theme.primary};
+  color: ${props => props.theme.lightSecondary};
 `
 
 const MenuIcon = styled.div`
@@ -20,38 +20,44 @@ const MenuIcon = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin-left: auto;
 
   div {
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: ${props => props.theme.lightSecondary};
     margin: 4px 0;
     transition: 0.4s;
   }
 `
 
+// TODO: height is hardcoded
 const Drawer = styled.ul`
+  border-radius: 15px;
+  margin: 8px 0;
   list-style: none;
   display: flex;
   flex-direction: column;
   position: fixed;
   top: 0;
   right: 0;
-  height: 100%;
+  height: 90.7%;
   width: 200px;
-  background-color: #333;
+  background-color: ${props => props.theme.primary};
   padding: 2rem;
   transform: ${({ $isopen }) => ($isopen ? 'translateX(0)' : 'translateX(100%)')};
   transition: transform 0.3s ease-in-out;
-  color: #fff;
+  color: ${props => props.theme.lightSecondary};
   z-index: 1000;
 `
 
 const DrawerItem = styled.li`
+  font-size: 1.5rem;
   padding: 1rem 0;
   cursor: pointer;
+  
   &:hover {
-    background-color: #444;
+    background-color: ${props => props.theme.darkSecondary};
   }
 `
 
@@ -69,7 +75,7 @@ const CloseIcon = styled.div`
     position: absolute;
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: ${props => props.theme.lightSecondary};
     top: 50%;
     left: 0;
     transform-origin: center;
@@ -85,8 +91,17 @@ const CloseIcon = styled.div`
   }
 `
 
+const NavImage = styled.img`
+  width: 75px;
+`
+
+const linkStyles = {
+  textDecoration: 'none',
+  color: 'inherit'
+}
+
 export function Nav() {
-  const { userContext, messageContext} = useContext(AppContext)
+  const { userContext } = useContext(AppContext)
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDrawer = () => {
@@ -100,7 +115,8 @@ export function Nav() {
 
   return (
     <NavContainer className='header'>
-      <h1>Client Browser Game</h1>
+      <NavImage src='../../public/pixil-frame-0.png' alt='pokeball' />
+      <Header>Pokemon TCG</Header>
       <MenuIcon onClick={toggleDrawer}>
         <div></div>
         <div></div>
@@ -111,13 +127,19 @@ export function Nav() {
         {userContext.user ? (
           <>
             <DrawerItem onClick={() => handleSignOut()}>Sign Out</DrawerItem>
+            <DrawerItem>
+              <Link style={linkStyles} to={'/buy-pack'}>Buy Pack</Link>
+            </DrawerItem>
+            <DrawerItem>
+              <Link style={linkStyles} to={'/binder'}>Your Binder</Link>
+            </DrawerItem>
           </>
         ) : (<>
           <DrawerItem>
-            <Link to={'/signup'}>Sign Up</Link>
+            <Link style={linkStyles} to={'/signup'}>Sign Up</Link>
           </DrawerItem>
           <DrawerItem>
-            <Link to={'/signin'}>Sign In</Link>
+            <Link style={linkStyles} to={'/signin'}>Sign In</Link>
           </DrawerItem>
         </>)}
       </Drawer>

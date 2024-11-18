@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 
 import { Nav } from '../Nav/Nav'
 import { Footer } from '../Footer/Footer'
@@ -13,17 +13,19 @@ const Container = styled.div`
         "footer" auto
         / 1fr;
     gap: 8px;
-    height: 100vh;
+    height: 98vh;
 `
 
-export function Layout({ children }) {
+export function Layout({ children, theme }) {
     return (
-        <Container>
-            <Nav />
-            <Main>
-                {children}
-            </Main>
-            <Footer />
-        </Container>
+        <ThemeProvider theme={theme}>
+            <Container>
+                <Nav />
+                <Main>
+                    {children}
+                </Main>
+                <Footer />
+            </Container>
+        </ThemeProvider>
     )
 }

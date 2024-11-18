@@ -4,9 +4,9 @@ import { useState, useContext } from 'react'
 import { AppContext } from '../../App/App'
 import { POKEMON_BOOSTER_PACKS } from '../game-logic/constants'
 import { getBoosterPack } from '../pokemon-services'
-import { createBoosterPack } from '../game-logic/createBoosterPack'
-import { PokemonCard } from './PokemonCard'
 import { OpenBoosterPack } from './OpenBoosterPack'
+import { Header } from '../../shared/Header'
+import { Card, CardHeader, CardImage } from '../../shared/Card'
 
 const BuyBoosterPackContainer = styled.div`
     display: flex;
@@ -34,30 +34,31 @@ const BuyBoosterPackCard = styled.div`
 `
 
 export function BuyBoosterPack() {
-    const { userContext, messageContext } = useContext(AppContext)
     const [boosterPack, setBoosterPack] = useState(null)
+    const { userContext, messageContext } = useContext(AppContext)
 
     async function handleBuyBoosterPack(event) {
         try {
-            const packAndEnergy = await getBoosterPack(event.target.innerText)
-            const pack = createBoosterPack(packAndEnergy.packData.data, packAndEnergy.energyData)
-            setBoosterPack(pack)
+            const { boughtPack } = await getBoosterPack(event.target.innerText, userContext.user._id)
+            setBoosterPack(boughtPack)
+            messageContext.handleAddMessage({ id: Date.now(), message: `You bought a ${boughtPack.name} booster pack!`, type: 'success' })
         } catch (error) {
-            console.error(error)
+            messageContext.handleAddMessage({ id: Date.now(), message: error.message, type: 'error' })
         }
     }
 
     return (
         <>
-            <h1>Buy a Booster Pack</h1>
+            <Header>Buy a Booster Pack</Header>
             {boosterPack ? (
                 <OpenBoosterPack boosterPack={boosterPack} setBoosterPack={setBoosterPack} />
             ) : (
                 <BuyBoosterPackContainer>
                     {POKEMON_BOOSTER_PACKS.map((pack) => (
-                        <BuyBoosterPackCard onClick={handleBuyBoosterPack} key={pack}>{pack}</BuyBoosterPackCard>
+                        <Card onClick={handleBuyBoosterPack} key={pack}>
+                            <CardHeader>{pack}</CardHeader>
+                        </Card>
                     ))}
-
                 </BuyBoosterPackContainer>
             )}
 

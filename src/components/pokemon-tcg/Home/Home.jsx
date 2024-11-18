@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { Card, CardHeader } from '../../shared/Card'
+import { linkStyles } from '../../shared/styles'
+
 const HomeContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
@@ -9,37 +12,29 @@ const HomeContainer = styled.div`
     height: 100%;
 `
 
-const HomeCard = styled.div`
-    width: 200px;
-    height: 200px;
-    margin: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #f0f0f0;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    transition: 0.3s;
-    &:hover {
-        transform: scale(1.05);
-    }
-`
-
+// TODO: need to add images to the home page
 export function Home() {
     return (
         <HomeContainer>
-            <Link to='/buy-pack'>
-                <HomeCard>Buy a Booster Pack</HomeCard>
+            <Link style={linkStyles} to='/buy-pack'>
+                <Card>
+                    <CardHeader>Buy a Booster Pack</CardHeader>
+                </Card>
             </Link>
-            <Link to='/binder'>
-                <HomeCard>Your Binder</HomeCard>
+            <Link style={linkStyles} to='/binder'>
+                <Card>
+                    <CardHeader>Your Binder</CardHeader>
+                </Card>
             </Link>
-            <Link to='/battle'>
-                <HomeCard>Battle</HomeCard>
+            <Link style={linkStyles} to='/battle'>
+                <Card>
+                    <CardHeader>Battle</CardHeader>
+                </Card>
             </Link>
-            <Link to='/trade'>
-                <HomeCard>Trade</HomeCard>
+            <Link style={linkStyles} to='/trade'>
+                <Card>
+                    <CardHeader>Trade</CardHeader>
+                </Card>
             </Link>
         </HomeContainer>
     )

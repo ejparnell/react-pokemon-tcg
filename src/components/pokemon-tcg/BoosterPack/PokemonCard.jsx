@@ -10,7 +10,6 @@ const CardContainer = styled.div`
 const Card = styled.div`
   width: 100%;
   height: 100%;
-  position: relative;
   transform-style: preserve-3d;
   transition: transform 0.6s;
   cursor: pointer;
@@ -39,7 +38,7 @@ const CardImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
- `
+`
 
 export function PokemonCard({ card, handleOpenBoosterPack }) {
     const [isFlipped, setIsFlipped] = useState(false)
@@ -60,7 +59,7 @@ export function PokemonCard({ card, handleOpenBoosterPack }) {
             <CardImage src={'../../../../public/cardBack.jpg'} alt={'Pokemon Card Back'} />
           </CardBack>
           <CardFront>
-            <CardImage src={card.images.large} alt={card.name} />
+            <CardImage src={card.images} alt={card.name} />
           </CardFront>
         </Card>
       </CardContainer>

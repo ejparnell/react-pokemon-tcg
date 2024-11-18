@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react'
+
 import { signUp } from '../user-services'
 import { AppContext } from '../../components/App/App'
 import { AuthForm } from '../shared/AuthForm'
+import { AuthPageContainer } from '../shared/AuthPageContainer'
 
 export function SignUp() {
     const { userContext, messageContext } = useContext(AppContext)
@@ -28,11 +30,13 @@ export function SignUp() {
     }
 
     return (
-        <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            formData={formData}
-            signUpAction={true}
-        />
+        <AuthPageContainer>
+            <AuthForm
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                formData={formData}
+                signUpAction={true}
+            />
+        </AuthPageContainer>
     )
 }

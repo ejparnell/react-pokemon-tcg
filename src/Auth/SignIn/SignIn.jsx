@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { signIn } from '../user-services'
 import { AppContext } from '../../components/App/App'
 import { AuthForm } from '../shared/AuthForm'
+import { AuthPageContainer } from '../shared/AuthPageContainer'
 
 export function SignIn() {
     const { userContext, messageContext } = useContext(AppContext)
@@ -31,10 +32,12 @@ export function SignIn() {
     }
 
     return (
-        <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleSubmit}
-            formData={formData}
-        />
+        <AuthPageContainer>
+            <AuthForm
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                formData={formData}
+            />
+        </AuthPageContainer>
     )
 }
