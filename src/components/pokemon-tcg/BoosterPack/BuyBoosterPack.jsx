@@ -3,7 +3,7 @@ import { useState, useContext } from 'react'
 
 import { AppContext } from '../../App/App'
 import { POKEMON_BOOSTER_PACKS } from '../game-logic/constants'
-import { getBoosterPack } from '../pokemon-services'
+import { buyBoosterPack } from '../pokemon-services'
 import { OpenBoosterPack } from './OpenBoosterPack'
 import { Header } from '../../shared/Header'
 import { Card, CardHeader, CardImage } from '../../shared/Card'
@@ -38,11 +38,13 @@ export function BuyBoosterPack() {
     const { userContext, messageContext } = useContext(AppContext)
 
     async function handleBuyBoosterPack(event) {
+        console.log(event.target.innerText)
         try {
-            const { boughtPack } = await getBoosterPack(event.target.innerText, userContext.user._id)
+            const { boughtPack } = await buyBoosterPack(event.target.innerText, userContext.user._id)
             setBoosterPack(boughtPack)
             messageContext.handleAddMessage({ id: Date.now(), message: `You bought a ${boughtPack.name} booster pack!`, type: 'success' })
         } catch (error) {
+            console.log(error)
             messageContext.handleAddMessage({ id: Date.now(), message: error.message, type: 'error' })
         }
     }
@@ -53,9 +55,9 @@ export function BuyBoosterPack() {
             {boosterPack ? (
                 <OpenBoosterPack boosterPack={boosterPack} setBoosterPack={setBoosterPack} />
             ) : (
-                <BuyBoosterPackContainer>
+                <BuyBoosterPackContainer onClick={handleBuyBoosterPack}>
                     {POKEMON_BOOSTER_PACKS.map((pack) => (
-                        <Card onClick={handleBuyBoosterPack} key={pack}>
+                        <Card key={pack}>
                             <CardHeader>{pack}</CardHeader>
                         </Card>
                     ))}

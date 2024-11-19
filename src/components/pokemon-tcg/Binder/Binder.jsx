@@ -18,7 +18,7 @@ export function Binder() {
     useEffect(() => {
         async function fetchBinder() {
             try {
-                const binder = await getBinder(userContext.user._id)
+                const binder = await getBinder()
                 setCards(binder[0].cards)
                 messageContext.handleAddMessage({ id: Date.now(), message: 'Binder loaded', type: 'success' })
             } catch (error) {

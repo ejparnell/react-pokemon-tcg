@@ -5,7 +5,11 @@ import './index.css'
 import App from './components/App/App'
 
 createRoot(document.getElementById('root')).render(
-  <Router>
+  <Router
+    future={{
+      v7_startTransition: true,
+      v7_relativeSplatPath: true,
+    }}>
     <StrictMode>
       <App />
     </StrictMode>

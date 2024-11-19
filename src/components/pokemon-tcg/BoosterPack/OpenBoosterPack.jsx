@@ -40,19 +40,9 @@ export function OpenBoosterPack({ boosterPack, setBoosterPack }) {
     const { userContext, messageContext } = useContext(AppContext)
     const navigate = useNavigate()
 
-    // async function addBoosterPackToBinder(currentCard) {
-    //     try {
-    //         await addBoosterPack(userContext.user._id, currentCard)
-    //         messageContext.handleAddMessage({ id: Date.now(), message: `${currentCard.name} added to binder!`, type: 'success' })
-    //     } catch (error) {
-    //         messageContext.handleAddMessage({ id: Date.now(), message: error.message, type: 'error' })
-    //     }
-    // }
-
     async function handleOpenBoosterPack() {
         const newBoosterPack = [...boosterPack]
         const currentCard = newBoosterPack.pop()
-        // addBoosterPackToBinder(currentCard)
         setBoosterPack(newBoosterPack)
     }
 
