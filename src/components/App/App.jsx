@@ -10,6 +10,7 @@ import { BuyBoosterPack } from '../pokemon-tcg/BoosterPack/BuyBoosterPack'
 import { Binder } from '../pokemon-tcg/Binder/Binder'
 import { standard } from '../shared/styles'
 import { Header } from '../shared/Header'
+import { DeckHome } from '../pokemon-tcg/Deck/DeckHome'
 
 import './App.css'
 
@@ -36,6 +37,7 @@ function App() {
           <Route path='/signin' element={<SignIn />} />
           <Route path='/buy-pack' element={<BuyBoosterPack />} />
           <Route path='/binder' element={<Binder />} />
+          <Route path='/deck' element={<DeckHome />} />
           <Route path='*' element={<Header>Not Found</Header>} />
         </Routes>
         {messages.map((message) => (

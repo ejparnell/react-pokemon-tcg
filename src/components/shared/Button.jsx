@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 const ButtonContainer = styled.button`
-    background-color: ${props => props.theme.primary};
-    color: ${props => props.theme.lightSecondary};
+    background-color: ${({ theme, $active }) => ($active ? theme.lightSecondary : theme.primary)};
+    color: ${({ theme, $active }) => ($active ? theme.primary : theme.lightSecondary)};
     border: none;
     border-radius: 5px;
     padding: 0.5rem;

@@ -26,7 +26,12 @@ export function Home() {
                     <CardHeader>Your Binder</CardHeader>
                 </Card>
             </Link>
-            <Link style={linkStyles} to='/battle'>
+            <Link style={linkStyles} to='/deck'>
+                <Card>
+                    <CardHeader>Your Decks</CardHeader>
+                </Card>
+            </Link>
+            {/* <Link style={linkStyles} to='/battle'>
                 <Card>
                     <CardHeader>Battle</CardHeader>
                 </Card>
@@ -35,7 +40,8 @@ export function Home() {
                 <Card>
                     <CardHeader>Trade</CardHeader>
                 </Card>
-            </Link>
+            </Link> */}
+
         </HomeContainer>
     )
 }

@@ -115,7 +115,9 @@ export function Nav() {
 
   return (
     <NavContainer className='header'>
-      <NavImage src='../../public/pixil-frame-0.png' alt='pokeball' />
+      <Link to='/'>
+        <NavImage src='../../public/pixil-frame-0.png' alt='pokeball' />
+      </Link>
       <Header>Pokemon TCG</Header>
       <MenuIcon onClick={toggleDrawer}>
         <div></div>
