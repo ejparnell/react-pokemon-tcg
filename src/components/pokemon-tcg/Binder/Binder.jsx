@@ -2,11 +2,9 @@ import { useState, useEffect, useContext } from 'react'
 import styled from 'styled-components'
 
 import { getBinder } from '../pokemon-services'
-import { PokemonCard } from '../../shared/PokemonCard'
 import { AppContext } from '../../App/App'
 import { Header } from '../../shared/Header'
 import { Paragraph } from '../../shared/Paragraph'
-import { ToolTip } from '../../shared/ToolTip'
 import { Dropdown } from '../../shared/Dropdown'
 import { Pagination } from '../../shared/Pagination'
 
@@ -57,7 +55,6 @@ export function Binder() {
             {allBinderCards.length === 0 ? (
                 <Paragraph>Go buy some card!!</Paragraph>
             ) : (
-
                 <Pagination cards={currentCards} />
             )}
         </BinderContainer>

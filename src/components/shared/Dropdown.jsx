@@ -12,14 +12,17 @@ const DropdownWrapper = styled.div`
 
 const DropdownButton = styled.button`
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: ${({ theme }) => theme.primary};
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  font: inherit;
+  width: 100%;
 
   &:hover {
-    background-color: #0056b3;
+    background-color: ${({ theme }) => theme.darkSecondary};
+    color: ${({ theme }) => theme.primary};
   }
 `
 
@@ -40,7 +43,7 @@ const DropdownItem = styled.div`
   cursor: pointer;
 
   &:hover {
-    background-color: #f1f1f1;
+    background-color: ${({ theme }) => theme.lightSecondary};
   }
 `
 
