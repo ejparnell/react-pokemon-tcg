@@ -10,12 +10,13 @@ const CardImage = styled.img`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: ${({ $greyedOut }) => $greyedOut ? 'grayscale(100%)' : 'none'};
 `
 
-export function PokemonCard({ card }) {
+export function PokemonCard({ card, greyedOut }) {
     return (
         <Card>
-            <CardImage src={card.images} alt={card.name} />
+            <CardImage src={card.images} alt={card.name} $greyedOut={greyedOut} />
         </Card>
     )
 }

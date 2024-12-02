@@ -38,13 +38,11 @@ export function BuyBoosterPack() {
     const { userContext, messageContext } = useContext(AppContext)
 
     async function handleBuyBoosterPack(event) {
-        console.log(event.target.innerText)
         try {
             const { boughtPack } = await buyBoosterPack(event.target.innerText, userContext.user._id)
             setBoosterPack(boughtPack)
             messageContext.handleAddMessage({ id: Date.now(), message: `You bought a ${boughtPack.name} booster pack!`, type: 'success' })
         } catch (error) {
-            console.log(error)
             messageContext.handleAddMessage({ id: Date.now(), message: error.message, type: 'error' })
         }
     }

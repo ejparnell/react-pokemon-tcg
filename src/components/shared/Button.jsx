@@ -6,18 +6,18 @@ const ButtonContainer = styled.button`
     border: none;
     border-radius: 5px;
     padding: 0.5rem;
-    margin-top: 1rem;
     cursor: pointer;
     transition: 0.3s;
+    font: inherit;
     
     &:hover {
         background-color: ${props => props.theme.darkSecondary};
     }
 `
 
-export function Button({ children }) {
+export function Button({ children, onClick }) {
     return (
-        <ButtonContainer>
+        <ButtonContainer onClick={onClick}>
             { children }
         </ButtonContainer>
     )

@@ -7,7 +7,7 @@ import { ToolTip } from './ToolTip'
 const PaginationControls = styled.div`
     display: flex;
     justify-content: center;
-`;
+`
 
 const PaginationChevron = styled.img`
     cursor: pointer;
@@ -80,7 +80,7 @@ export function Pagination({ cards }) {
                     <QuantityContainer key={card._id}>
                         <PokemonCard card={card} />
                         <Quantity>
-                            <ToolTip text='Duplicate cards'>
+                            <ToolTip text='Number of Cards'>
                                 {card.quantity}
                             </ToolTip>
                         </Quantity>

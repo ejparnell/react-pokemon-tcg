@@ -11,6 +11,8 @@ import { Binder } from '../pokemon-tcg/Binder/Binder'
 import { standard } from '../shared/styles'
 import { Header } from '../shared/Header'
 import { DeckHome } from '../pokemon-tcg/Deck/DeckHome'
+import { PreBuiltIndex } from '../pokemon-tcg/Deck/PreBuiltIndex'
+import { PreBuiltShow } from '../pokemon-tcg/Deck/PreBuiltShow'
 
 import './App.css'
 
@@ -38,6 +40,9 @@ function App() {
           <Route path='/buy-pack' element={<BuyBoosterPack />} />
           <Route path='/binder' element={<Binder />} />
           <Route path='/deck' element={<DeckHome />} />
+          <Route path='/deck/create' element={<h1>Create a deck</h1>} />
+          <Route path='/deck/pre-built' element={<PreBuiltIndex />} />
+          <Route path='/deck/pre-built/:deckName' element={<PreBuiltShow />} />
           <Route path='*' element={<Header>Not Found</Header>} />
         </Routes>
         {messages.map((message) => (
