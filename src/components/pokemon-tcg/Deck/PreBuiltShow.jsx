@@ -65,6 +65,46 @@ const CardContainer = styled.div`
     justify-content: center;
 `
 
+const DeckBuilderSummaryCard = styled.div`
+    width: 219px;
+    height: 300px;
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: ${props => props.theme.secondary};
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+`
+
+const Form = styled.form`
+    display: flex;
+    flex-direction: column;
+`
+
+const SubmitButton = styled.input`
+    background-color: ${props => props.theme.primary};
+    color: ${props => props.theme.lightSecondary};
+    border: none;
+    border-radius: 5px;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    &:hover {
+        background-color: ${props => props.theme.darkSecondary};
+    }
+    font: inherit;
+`
+
+const Input = styled.input`
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: 1px solid ${props => props.theme.primary};
+`
+
 const TABS = ['All Cards', 'Deck Cards']
 
 export function PreBuiltShow() {
@@ -75,6 +115,7 @@ export function PreBuiltShow() {
     const [currentCards, setCurrentCards] = useState([])
     const [activeTab, setActiveTab] = useState(TABS[0])
     const [builtDeck, setBuiltDeck] = useState([])
+    const [inputDeckName, setInputDeckName] = useState('')
 
     useEffect(() => {
         async function getPokemon() {
@@ -120,6 +161,10 @@ export function PreBuiltShow() {
 
     function handleAddToDeck(card) {
         setBuiltDeck([...builtDeck, card])
+    }
+
+    function handleNameChange(event) {
+        setInputDeckName(event.target.value)
     }
 
     return (
@@ -174,11 +219,27 @@ export function PreBuiltShow() {
                 }
                 {activeTab === TABS[1] &&
                     <CardsContainer>
-                        {builtDeck.map((card) => (
-                            <CardContainer key={card._id}>
-                                <PokemonCard card={card} />
-                            </CardContainer>
-                        ))}
+                        {builtDeck.length === 0 ? (
+                            <>Add some cards</>
+                        ) : (
+                            <>
+                            <DeckBuilderSummaryCard>
+                                        Building Deck Summary
+                                        <Form>
+                                            <label htmlFor='deck-name'>Deck Name:</label>
+                                            <Input type='text' id='deck-name' name='deck-name' value={inputDeckName} onChange={handleNameChange} />
+                                            <SubmitButton type='submit' value='Save Deck' />
+                                        </Form>
+                                        Current Number of Cards: {builtDeck.length} (limit 60)
+                                    </DeckBuilderSummaryCard>
+                            {builtDeck.map((card) => (
+                                <CardContainer key={card._id}>
+                                    <PokemonCard card={card} />
+                                    
+                                </CardContainer>
+                            ))}
+                            </>
+                        )}
                     </CardsContainer>
                 }
             </DeckBuilderBody>

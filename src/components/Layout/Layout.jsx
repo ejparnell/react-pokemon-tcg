@@ -13,13 +13,15 @@ const Container = styled.div`
         "footer" auto
         / 1fr;
     gap: 8px;
-    height: 98vh;
+    height: ${({ height }) => `${height}px` || '100vh'};
+    box-sizing: border-box;
+    padding: 5px;
 `
 
-export function Layout({ children, theme }) {
+export function Layout({ children, theme, height }) {
     return (
         <ThemeProvider theme={theme}>
-            <Container>
+            <Container height={height}>
                 <Nav />
                 <Main>
                     {children}

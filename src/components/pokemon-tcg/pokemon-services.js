@@ -40,3 +40,34 @@ export async function getDeckPokemon(names) {
         throw new Error(err)
     }
 }
+// restructure
+export async function fetchPreBuiltDeck(name) {
+    try {
+        const res = await fetch(`${BACKEND_URL}/decks/${name}`, {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+        })
+        const json = await res.json()
+        return json
+    } catch (error) {
+        throw new Error(error)
+    }
+}
+
+export async function buyPreBuiltDecks(deckName, cards) {
+    try {
+        const res = await fetch(`${BACKEND_URL}/decks/buy`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({ deckName: deckName, cards })
+        })
+        const json = await res.json()
+        return json
+    } catch(err) {
+        throw new Error(err)
+    }
+}

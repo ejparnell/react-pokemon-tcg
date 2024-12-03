@@ -1,5 +1,7 @@
 import styled from 'styled-components'
 
+import { SplayedCardsImage } from '../../components/shared/SplayedCardsImage'
+
 const Container = styled.div`
     display: flex;
     justify-content: center;
@@ -7,15 +9,10 @@ const Container = styled.div`
     height: 100%;
 `
 
-const Image = styled.img`
-    width: 100px;
-    height: 100px;
-`
-// TODO: need a new image. Something bigger
 export function AuthPageContainer({ children }) {
     return (
         <Container>
-            <Image src='../../public/pixil-frame-0.png' alt='Pixil art Pokemon Ball' />
+            <SplayedCardsImage />
             {children}
         </Container>
     )

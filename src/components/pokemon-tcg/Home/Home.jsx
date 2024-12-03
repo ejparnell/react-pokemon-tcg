@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-import { Card, CardHeader } from '../../shared/Card'
+import { Card, CardHeader, CardText } from '../../shared/Card'
 import { linkStyles } from '../../shared/styles'
 
 const HomeContainer = styled.div`
@@ -16,7 +16,13 @@ const HomeContainer = styled.div`
 export function Home() {
     return (
         <HomeContainer>
-            <Link style={linkStyles} to='/buy-pack'>
+            <Link style={linkStyles} to='/buy'>
+            <Card>
+                <CardHeader>Buy Cards</CardHeader>
+                <CardText>Buy decks, booster packs, and individual cards.</CardText>
+            </Card>
+            </Link>
+            {/* <Link style={linkStyles} to='/buy-pack'>
                 <Card>
                     <CardHeader>Buy a Booster Pack</CardHeader>
                 </Card>
@@ -30,7 +36,7 @@ export function Home() {
                 <Card>
                     <CardHeader>Your Decks</CardHeader>
                 </Card>
-            </Link>
+            </Link> */}
             {/* <Link style={linkStyles} to='/battle'>
                 <Card>
                     <CardHeader>Battle</CardHeader>

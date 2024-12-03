@@ -5,6 +5,7 @@ const CardContainer = styled.div`
     height: 300px;
     margin: 1rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: ${props => props.theme.lightSecondary};
@@ -20,15 +21,23 @@ const CardContainer = styled.div`
 
 const CardHeaderContainer = styled.h2`
     font-size: 2rem;
-    margin: 0;
     text-align: center;
-    align-self: flex-start;
-    margin-top: 20px;
     color: ${props => props.theme.primary};
+    padding: 2px;
 `
 
-// TODO: After getting home images, update this to use an image
+const CardTextContainer = styled.p`
+    font-size: 1.5rem;
+    text-align: center;
+    color: ${props => props.theme.primary};
+    padding: 2px;
+`
+
 const CardImageContainer = styled.img`
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    border-radius: 10px 10px 0 0;
 `
 
 export function Card({ children }) {
@@ -50,5 +59,13 @@ export function CardHeader({ children }) {
 export function CardImage ({ src }) {
     return (
         <CardImageContainer src={src} />
+    )
+}
+
+export function CardText({ children }) {
+    return (
+        <CardTextContainer>
+            { children }
+        </CardTextContainer>
     )
 }
