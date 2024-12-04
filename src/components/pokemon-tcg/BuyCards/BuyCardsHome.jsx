@@ -1,19 +1,14 @@
 import { HomePage } from '../../shared/HomePage'
 
 const buyCardsHomeData = [{
-    header: 'Buy Deck',
+    header: 'Buy Decks',
     text: 'Buy Prebuilt Decks.',
     link: '/buy/decks',
     image: ''
 }, {
     header: 'Buy Booster Packs',
     text: 'Buy Booster Packs.',
-    link: '/buy-booster-packs',
-    image: ''
-}, {
-    header: 'Buy Individual Cards',
-    text: 'Buy Individual Cards.',
-    link: '/buy-individual-cards',
+    link: '/buy/booster-packs',
     image: ''
 }]
 

@@ -65,11 +65,9 @@ export function BuyDeckShow() {
         async function getPrebuiltDeck() {
             try {
                 const deck = await fetchPreBuiltDeck(deckNameParams)
-                console.log('deck', deck)
                 setBaseDeck(deck.baseDeck)
                 setBase2Deck(deck.base2Deck)
             } catch (error) {
-                console.error(error)
                 messageContext.handleAddMessage({ id: Date.now(), message: error.message, type: 'error' })
             }
         }
@@ -79,13 +77,14 @@ export function BuyDeckShow() {
     async function handleBuyDeck() {
         try {
             if (activeTab === TABS[0]) {
-                const boughtDeck = await buyPreBuiltDecks(deckNameParams, baseDeck)
+                await buyPreBuiltDecks(deckNameParams, baseDeck)
+                messageContext.handleAddMessage({ id: Date.now(), message: `${deckNameParams} was bought!`, type: 'success' })
             }
             if (activeTab === TABS[1]) {
-                const boughtDeck = await buyPreBuiltDecks(deckNameParams, base2Deck)
+                await buyPreBuiltDecks(deckNameParams, base2Deck)
+                messageContext.handleAddMessage({ id: Date.now(), message: `${deckNameParams} was bought!`, type: 'success' })
             }
         } catch (error) {
-            console.error(error)
             messageContext.handleAddMessage({ id: Date.now(), message: error.message, type: 'error' })
         }
     }
@@ -120,8 +119,8 @@ export function BuyDeckShow() {
                     </ListHeader>
                 </ul>
                 <ButtonContainer>
-                    <Button $active={activeTab === TABS[0] ? true : false} margin={'2px'} onClick={() => setActiveTab(TABS[0])}>View Base Deck</Button>
-                    <Button $active={activeTab === TABS[1] ? true : false} margin={'2px'} onClick={() => setActiveTab(TABS[1])} >View Base Set 2 Deck</Button>
+                    <Button active={activeTab === TABS[0]} margin={'2px'} onClick={() => setActiveTab(TABS[0])}>View Base Deck</Button>
+                    <Button active={activeTab === TABS[1]} margin={'2px'} onClick={() => setActiveTab(TABS[1])} >View Base Set 2 Deck</Button>
                 </ButtonContainer>
                 <Button margin={'2px'} onClick={handleBuyDeck}>Buy Deck - {activeTab}</Button>
             </DeckBreakdownContainer>

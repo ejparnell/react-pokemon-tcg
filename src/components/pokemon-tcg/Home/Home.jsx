@@ -17,10 +17,16 @@ export function Home() {
     return (
         <HomeContainer>
             <Link style={linkStyles} to='/buy'>
-            <Card>
-                <CardHeader>Buy Cards</CardHeader>
-                <CardText>Buy decks, booster packs, and individual cards.</CardText>
-            </Card>
+                <Card>
+                    <CardHeader>Buy Cards</CardHeader>
+                    <CardText>Buy decks and booster packs.</CardText>
+                </Card>
+            </Link>
+            <Link style={linkStyles} to='/owned-cards'>
+                <Card>
+                    <CardHeader>Your Cards</CardHeader>
+                    <CardText>View your cards.</CardText>
+                </Card>
             </Link>
             {/* <Link style={linkStyles} to='/buy-pack'>
                 <Card>

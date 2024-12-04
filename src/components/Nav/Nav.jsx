@@ -130,11 +130,17 @@ export function Nav() {
           <>
             <DrawerItem onClick={() => handleSignOut()}>Sign Out</DrawerItem>
             <DrawerItem>
+              <Link style={linkStyles} to={'/'}>Home</Link>
+            </DrawerItem>
+            <DrawerItem>
+              <Link style={linkStyles} to={'/buy'}>Buy Cards</Link>
+            </DrawerItem>
+            {/* <DrawerItem>
               <Link style={linkStyles} to={'/buy-pack'}>Buy Pack</Link>
             </DrawerItem>
             <DrawerItem>
               <Link style={linkStyles} to={'/binder'}>Your Binder</Link>
-            </DrawerItem>
+            </DrawerItem> */}
           </>
         ) : (<>
           <DrawerItem>

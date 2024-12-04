@@ -71,3 +71,15 @@ export async function buyPreBuiltDecks(deckName, cards) {
         throw new Error(err)
     }
 }
+
+export async function fetchBinder() {
+    try {
+        const res = await fetch(`${BACKEND_URL}/binders`, {
+            headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
+        })
+        const json = await res.json()
+        return json
+    } catch (err) {
+        throw new Error(err)
+    }
+}

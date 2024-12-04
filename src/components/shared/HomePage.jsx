@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { Card, CardHeader, CardText, CardImage } from './Card'
 import { linkStyles } from './styles'
+import { SplayedCardsImage } from './SplayedCardsImage'
 
 const HomeContainer = styled.div`
     display: flex;
@@ -19,7 +20,7 @@ export function HomePage({ data }) {
                 <Link key={data.header} style={linkStyles} to={data.link}>
                     <Card>
                         <CardHeader>{data.header}</CardHeader>
-                        <CardText>{data.text}</CardText>
+                        {data.text && <CardText>{data.text}</CardText>}
                         {data.image && <CardImage src={data.image} />}
                     </Card>
                 </Link>

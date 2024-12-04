@@ -57,10 +57,10 @@ const HeroCard = styled.img`
     z-index: 10;
 `
 
-export function SplayedCardsImage() {
+export function SplayedCardsImage({ image }) {
     return (
         <SplayedCards>
-            <HeroCard src='https://images.pokemontcg.io/base5/55_hires.png' alt='Pokemon Card Back' />
+            <HeroCard src={image} alt='Pokemon Card front' />
             <CardBack4 src='../../../public/cardBack.jpg' alt='Pokemon Card Back' />
             <CardBack3 src='../../../public/cardBack.jpg' alt='Pokemon Card Back' />
             <CardBack2 src='../../../public/cardBack.jpg' alt='Pokemon Card Back' />

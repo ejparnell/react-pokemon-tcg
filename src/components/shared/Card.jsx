@@ -24,6 +24,7 @@ const CardHeaderContainer = styled.h2`
     text-align: center;
     color: ${props => props.theme.primary};
     padding: 2px;
+    margin: 5px;
 `
 
 const CardTextContainer = styled.p`

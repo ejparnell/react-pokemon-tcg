@@ -7,18 +7,17 @@ import { SignUp } from '../../Auth/SignUp/SignUp'
 import { Message } from '../Message/Message'
 import { SignIn } from '../../Auth/SignIn/SignIn'
 import { Home } from '../pokemon-tcg/Home/Home'
-import { BuyBoosterPack } from '../pokemon-tcg/BoosterPack/BuyBoosterPack'
-import { Binder } from '../pokemon-tcg/Binder/Binder'
 import { standard } from '../shared/styles'
 import { Header } from '../shared/Header'
-import { DeckHome } from '../pokemon-tcg/Deck/DeckHome'
-import { PreBuiltIndex } from '../pokemon-tcg/Deck/PreBuiltIndex'
-import { PreBuiltShow } from '../pokemon-tcg/Deck/PreBuiltShow'
-import { BuyCardsHome } from '../pokemon-tcg/BuyCards/BuyCardsHome'
-import { BuyDeckShow } from '../pokemon-tcg/BuyCards/BuyDecks/BuyDeckShow'
+
 
 import './App.css'
+import { BuyCardsHome } from '../pokemon-tcg/BuyCards/BuyCardsHome'
 import { BuyDecksHome } from '../pokemon-tcg/BuyCards/BuyDecks/BuyDecksHome'
+import { BuyDeckShow } from '../pokemon-tcg/BuyCards/BuyDecks/BuyDeckShow'
+import { BuyBoosterPackHome } from '../pokemon-tcg/BuyCards/BuyBoosterPacks/BuyBoosterPackHome'
+import { BuyBoosterPackShow } from '../pokemon-tcg/BuyCards/BuyBoosterPacks/BuyBoosterPackShow'
+import { OwnedCardsHome } from '../pokemon-tcg/OwnedCards/OwnedCardsHome'
 
 export const AppContext = createContext(null)
 
@@ -45,6 +44,9 @@ function App() {
           <Route path='/buy' element={<BuyCardsHome />} />
           <Route path='/buy/decks' element={<BuyDecksHome />} />
           <Route path='/buy/decks/:deckName' element={<BuyDeckShow />} />
+          <Route path='/buy/booster-packs' element={<BuyBoosterPackHome />} />
+          <Route path='/buy/booster-packs/:packName' element={<BuyBoosterPackShow />} />
+          <Route path='/owned-cards' element={<OwnedCardsHome />} />
           {/* <Route path='/buy-pack' element={<BuyBoosterPack />} />
           <Route path='/binder' element={<Binder />} />
           <Route path='/deck' element={<DeckHome />} />

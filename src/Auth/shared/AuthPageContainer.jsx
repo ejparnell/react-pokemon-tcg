@@ -12,7 +12,7 @@ const Container = styled.div`
 export function AuthPageContainer({ children }) {
     return (
         <Container>
-            <SplayedCardsImage />
+            <SplayedCardsImage image={'https://images.pokemontcg.io/base5/55_hires.png'} />
             {children}
         </Container>
     )
