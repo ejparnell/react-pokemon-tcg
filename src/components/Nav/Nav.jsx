@@ -31,7 +31,6 @@ const MenuIcon = styled.div`
   }
 `
 
-// TODO: height is hardcoded
 const Drawer = styled.ul`
   border-radius: 15px;
   margin: 8px 0;
@@ -41,7 +40,7 @@ const Drawer = styled.ul`
   position: fixed;
   top: 0;
   right: 0;
-  height: 90.7%;
+  height: ${({ $totalHeight }) => `${$totalHeight}px`};
   width: 200px;
   background-color: ${props => props.theme.primary};
   padding: 2rem;
@@ -49,6 +48,7 @@ const Drawer = styled.ul`
   transition: transform 0.3s ease-in-out;
   color: ${props => props.theme.lightSecondary};
   z-index: 1000;
+  border-box: box-sizing;
 `
 
 const DrawerItem = styled.li`
@@ -100,8 +100,8 @@ const linkStyles = {
   color: 'inherit'
 }
 
-export function Nav() {
-  const { userContext } = useContext(AppContext)
+export default function Nav() {
+  const { userContext, windowDimensions  } = useContext(AppContext)
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleDrawer = () => {
@@ -114,7 +114,7 @@ export function Nav() {
   }
 
   return (
-    <NavContainer className='header'>
+    <NavContainer>
       <Link to='/'>
         <NavImage src='../../public/pixil-frame-0.png' alt='pokeball' />
       </Link>
@@ -124,7 +124,7 @@ export function Nav() {
         <div></div>
         <div></div>
       </MenuIcon>
-      <Drawer $isopen={isOpen}>
+      <Drawer $isopen={isOpen} $totalHeight={windowDimensions.totalHeight}>
         <CloseIcon onClick={toggleDrawer} />
         {userContext.user ? (
           <>

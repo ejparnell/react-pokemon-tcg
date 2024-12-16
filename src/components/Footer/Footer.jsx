@@ -13,7 +13,7 @@ const Container = styled.footer`
     border-radius: 0 0 15px 15px;
 `;
 
-export function Footer() {
+export default function Footer() {
     return (
         <Container>
             <Paragraph>Create by Elizabeth Parnell</Paragraph>

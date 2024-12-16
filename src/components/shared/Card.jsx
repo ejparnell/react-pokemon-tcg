@@ -13,6 +13,7 @@ const CardContainer = styled.div`
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     cursor: pointer;
     transition: 0.3s;
+    z-index: 10;
     
     &:hover {
         transform: scale(1.05);

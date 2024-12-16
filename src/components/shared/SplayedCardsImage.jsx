@@ -1,9 +1,13 @@
 import styled from 'styled-components'
+import { Card, CardHeader } from './Card'
 
 const SplayedCards = styled.div`
     position: relative;
-    width: 450px;
-    height: 300px;
+    width: 310px;
+    height: 355px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 const CardBack1 = styled.img`
@@ -57,10 +61,11 @@ const HeroCard = styled.img`
     z-index: 10;
 `
 
-export function SplayedCardsImage({ image }) {
+export function SplayedCardsImage({ image, text }) {
     return (
         <SplayedCards>
-            <HeroCard src={image} alt='Pokemon Card front' />
+            {image && <HeroCard src={image} alt='Pokemon Card' />}
+            {text && <Card><CardHeader>{text}</CardHeader></Card>}
             <CardBack4 src='../../../public/cardBack.jpg' alt='Pokemon Card Back' />
             <CardBack3 src='../../../public/cardBack.jpg' alt='Pokemon Card Back' />
             <CardBack2 src='../../../public/cardBack.jpg' alt='Pokemon Card Back' />

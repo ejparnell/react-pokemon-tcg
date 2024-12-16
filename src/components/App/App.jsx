@@ -2,11 +2,11 @@ import { useState, createContext } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import useWindowDimensions from './useWindowDimensions'
 
-import { Layout } from '../Layout/Layout'
+
 import { SignUp } from '../../Auth/SignUp/SignUp'
 import { Message } from '../Message/Message'
 import { SignIn } from '../../Auth/SignIn/SignIn'
-import { Home } from '../pokemon-tcg/Home/Home'
+
 import { standard } from '../shared/styles'
 import { Header } from '../shared/Header'
 
@@ -19,11 +19,16 @@ import { BuyBoosterPackHome } from '../pokemon-tcg/BuyCards/BuyBoosterPacks/BuyB
 import { BuyBoosterPackShow } from '../pokemon-tcg/BuyCards/BuyBoosterPacks/BuyBoosterPackShow'
 import { OwnedCardsHome } from '../pokemon-tcg/OwnedCards/OwnedCardsHome'
 
+// revamp
+import Layout from '../Layout/Layout'
+import Home from '../pokemon-tcg/Home/Home'
+
 export const AppContext = createContext(null)
 
 function App() {
   const [user, setUser] = useState(null)
   const [messages, setMessages] = useState([])
+  const [mainHeight, setMainHeight] = useState(0)
   const { height, width } = useWindowDimensions()
 
   function handleAddMessage(message) {
@@ -35,10 +40,16 @@ function App() {
   }
 
   return (
-    <AppContext.Provider value={{ messageContext: { handleAddMessage }, userContext: { user, setUser}, windowDimensions: { height, width } }}>
-      <Layout theme={standard} height={height}>
+    <AppContext.Provider value={
+      {
+        messageContext: { handleAddMessage },
+        userContext: { user, setUser },
+        windowDimensions: { totalHeight: height - 20, width, mainHeight, setMainHeight }
+      }}>
+        {/* margin top and bottom of 10px - is where the 20 is coming from */}
+      <Layout theme={standard} height={height - 20}>
         <Routes>
-          <Route path='/' element={user ? <Home /> : <SignIn />} />
+          <Route path='/' element={<Home mainHeight={mainHeight}/>} />
           <Route path='/signup' element={<SignUp />} />
           <Route path='/signin' element={<SignIn />} />
           <Route path='/buy' element={<BuyCardsHome />} />

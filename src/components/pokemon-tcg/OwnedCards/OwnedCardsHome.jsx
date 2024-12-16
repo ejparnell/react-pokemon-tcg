@@ -15,7 +15,6 @@ export function OwnedCardsHome() {
         async function getOwnedCards() {
             try {
                 const ownedCards = await fetchBinder()
-                console.log(ownedCards[0].cards)
             } catch (error) {
                 console.error(error)
             }
